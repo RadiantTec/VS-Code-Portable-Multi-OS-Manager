@@ -1,7 +1,4 @@
-# 💼 VS Code Portable Multi-OS Manager Version 0.0.1
-
-Not Currently Stable. Use at your own discretion.
-Trys to provide a **portable pendrive hostable vscode** for all 3 os windows, linux and mac, each having their set of versions in their respective directories sharing the same data folder.
+# 💼 VS Code Portable Multi-OS Manager
 
 This repository provides a **portable VS Code setup** for **Windows**, **Linux**, and **macOS** — including:
 
@@ -43,92 +40,98 @@ vscode-portable/
     └── 🔄 updater/
         ├── 🧰 update_vscode.sh      # Bash updater for macOS
         └── 🔗 linkupdater.sh        # Bash link updater
-⚙️ Usage
-🪟 Windows
-Open the windows/updater folder.
+```
 
-Double-click:
+---
 
-update_vscode.bat → updates installed VS Code versions
+## ⚙️ Usage
 
-linkupdater.bat → updates the launcher and .lnk shortcut to the latest available version
+### 🪟 Windows
 
-VS Code versions are stored in windows/vscode-stable-<ver>/.
+1. Open the `windows/updater` folder.  
+2. Double-click:
+   - **`update_vscode.bat`** → updates installed VS Code versions  
+   - **`linkupdater.bat`** → updates the launcher and `.lnk` shortcut to the latest available version  
+3. VS Code versions are stored in `windows/vscode-stable-<ver>/`.  
+4. All versions share the `windows/data/` folder for settings, extensions, and user data.
 
-All versions share the windows/data/ folder for settings, extensions, and user data.
+---
 
-🐧 Linux / 🍎 macOS
-Open the linux/updater or mac/updater folder.
+### 🐧 Linux / 🍎 macOS
 
-Make scripts executable:
+1. Open the `linux/updater` or `mac/updater` folder.  
+2. Make scripts executable:
 
-bash
-Copy code
-chmod +x update_vscode.sh linkupdater.sh
-Run via double-click (depending on your file manager) or via terminal:
+   ```bash
+   chmod +x update_vscode.sh linkupdater.sh
+   ```
 
-bash
-Copy code
-./update_vscode.sh
-./linkupdater.sh
-All versions share the linux/data/ or mac/data/ folder — settings and extensions are common across versions.
+3. Run via double-click (depending on your file manager) or via terminal:
 
-🔄 Settings Synchronization
-The settings_sync folder manages a central settings.json that can be propagated across OS-specific VS Code installations.
+   ```bash
+   ./update_vscode.sh
+   ./linkupdater.sh
+   ```
 
-🧩 Configuration (settings_sync_config.txt)
-The versions_sync variable defines which OS versions get the settings.
+4. All versions share the `linux/data/` or `mac/data/` folder — settings and extensions are common across versions.
 
-Format:
+---
 
-text
-Copy code
+## 🔄 Settings Synchronization
+
+The `settings_sync` folder manages a **central `settings.json`** that can be propagated across OS-specific VS Code installations.
+
+### 🧩 Configuration (`settings_sync_config.txt`)
+
+The `versions_sync` variable defines which OS versions get the settings.
+
+**Format:**
+```text
 versions_sync=[
     [latest,win],
     [latest,linux],
     [latest,mac]
 ]
-Values for src and dest:
+```
 
-self → the settings_sync/settings.json file
+**Values for `src` and `dest`:**
+- `self` → the `settings_sync/settings.json` file  
+- `latest` → latest `settings.json` from any OS/data folder  
+- `win`, `linux`, `mac` → use that OS’s `data/User/settings.json` as source or destination
 
-latest → latest settings.json from any OS/data folder
+---
 
-win, linux, mac → use that OS’s data/User/settings.json as source or destination
+## ⚙️ How It Works
 
-⚙️ How It Works
-settings_sync.sh reads versions_sync.
+1. `settings_sync.sh` reads `versions_sync`.  
+2. Copies `settings.json` from **source → destination** for each pair.  
+3. Ensures all OSes have consistent VS Code settings if desired.
 
-Copies settings.json from source → destination for each pair.
-
-Ensures all OSes have consistent VS Code settings if desired.
-
-Default configuration:
-
-text
-Copy code
+**Default configuration:**
+```text
 versions_sync=[
     [latest,win],
     [latest,linux],
     [latest,mac]
 ]
-This propagates the latest available settings to all OSes, supporting cross-OS synchronization without bidirectional conflicts.
+```
 
-📝 Notes
-Shared data folders:
+This propagates the latest available settings to all OSes, supporting **cross-OS synchronization** without bidirectional conflicts.
 
-🪟 Windows → windows/data/
+---
 
-🐧 Linux → linux/data/
+## 📝 Notes
 
-🍎 macOS → mac/data/
+- **Shared data folders:**
+  - 🪟 Windows → `windows/data/`
+  - 🐧 Linux → `linux/data/`
+  - 🍎 macOS → `mac/data/`
 
-All VS Code versions within the same OS share a single data/ folder.
+- All VS Code versions within the same OS share a single `data/` folder.  
+- Updater scripts handle downloading, version management, and link/launcher updates.  
+- Linux and macOS scripts need execution permission (`chmod +x`).  
+- Windows updater scripts can be double-clicked — `.bat` files invoke PowerShell scripts internally.
 
-Updater scripts handle downloading, version management, and link/launcher updates.
+---
 
-Linux and macOS scripts need execution permission (chmod +x).
-
-Windows updater scripts can be double-clicked — .bat files invoke PowerShell scripts internally.
-
-✨ Enjoy a unified, portable VS Code experience across all your operating systems!
+✨ **Enjoy a unified, portable VS Code experience across all your operating systems!**
