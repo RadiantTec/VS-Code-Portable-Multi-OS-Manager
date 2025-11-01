@@ -1,17 +1,22 @@
-# 💼 VS Code Portable Multi-OS Manager Version 0.0.1
+# 💼 VS Code Portable Multi-OS Manager · Version 0.0.1
 
-The project is currently not fully stable/tested. Use at your own discretion.
+> **Purpose:** Simplify using Visual Studio Code portably across Windows, Linux, and macOS.  
+> **Use Case:** Ideal for USB drives, multi-boot setups, or users maintaining isolated VS Code environments per OS.  
+> **Status:** Experimental — use at your own discretion.
 
-The projects aids in making a **portable pendrive hostable vscode** which works across the 3 os windows, linux and macOS, while enabling to maintain different versions of vscode for each os. Each version for a os share the same data folder optimising resource usage across versions.
+---
 
-Also it can be used specifically for local use in a specific os by simply copying the folder for that os in to the system, and making use of tools for that os to maintain the different versions of vscode.
+This project provides a **portable, USB-hostable VS Code setup** that works across **Windows, Linux, and macOS**, while allowing you to maintain **multiple VS Code versions per OS**.
 
-A **cross-platform portable VS Code environment** that allows you to easily:
-- Install and maintain multiple VS Code versions per OS
-- Automatically update to the latest versions
-- Share extensions, settings, and user data across Windows, Linux, and macOS
-- Launch VS Code directly without installation
-- Keep everything fully self-contained and portable (USB-ready)
+It can also be used locally on a single OS by copying only that OS’s folder and using its included updater tools.
+
+A **cross-platform portable VS Code environment** that lets you:
+
+- 🧩 Install and maintain multiple VS Code versions per OS  
+- 🔄 Automatically update to the latest releases  
+- ⚙️ Share extensions, settings, and user data across systems  
+- 🚀 Launch VS Code without installation  
+- 💾 Keep everything self-contained and portable (USB-ready)
 
 ---
 
@@ -22,8 +27,8 @@ A **cross-platform portable VS Code environment** that allows you to easily:
 You can **clone this repository** or **download it as a ZIP** and extract it.  
 The minimal folder structure looks like this:
 
-```
-VSCode-Portable/
+```text
+vscode-portable/
 │
 ├── windows/
 ├── linux/
@@ -43,7 +48,7 @@ vscode-portable/
 ├── settings_sync/
 │   ├── settings.json             # Centralized cross-OS settings
 │   ├── settings_sync.sh          # Synchronization script
-│   └── settings_sync_config.txt  # Configuration for which OS gets which settings
+│   └── settings_sync_config.txt  # Configuration defining sync direction
 │
 ├── windows/
 │   ├── data/                     # Shared user data for all Windows versions
@@ -51,14 +56,14 @@ vscode-portable/
 │   └── updater/
 │       ├── update_vscode.ps1     # PowerShell updater/downloader
 │       ├── linkupdater.ps1       # Maintains launcher and shortcut
-│       ├── update_vscode.bat     # One-click runner for PowerShell updater
+│       ├── update_vscode.bat     # One-click runner for updater
 │       └── linkupdater.bat       # One-click runner for link updater
 │
 ├── linux/
 │   ├── data/
 │   ├── vscode-stable-<ver>/
 │   └── updater/
-│       ├── update_vscode.sh      # Bash updater (auto-download and extract)
+│       ├── update_vscode.sh      # Bash updater (auto-download/extract)
 │       └── linkupdater.sh        # Updates symbolic link and launcher
 │
 └── mac/
@@ -73,26 +78,25 @@ vscode-portable/
 
 ## 🪟 Windows Setup
 
-1. Open the folder:
+1. Open:
    ```
    windows/updater/
    ```
 2. Double-click:
    - **`update_vscode.bat`** → downloads and installs the latest VS Code version  
-   - **`linkupdater.bat`** → updates the launcher (`launch-vscode.bat` / `VSCode.lnk`)
-3. After installation:
-   - Launch using **`VSCode.lnk`** or **`launch-vscode.bat`**
-   - Your settings and extensions live in `windows/data/`
+   - **`linkupdater.bat`** → updates launcher (`launch-vscode.bat` / `VSCode.lnk`)
+3. Launch using **`VSCode.lnk`** or **`launch-vscode.bat`**  
+   Settings and extensions live in `windows/data/`
 
 ---
 
 ## 🐧 Linux Setup
 
-1. Open the folder:
+1. Open:
    ```
    linux/updater/
    ```
-2. Make the scripts executable:
+2. Make scripts executable:
    ```bash
    chmod +x update_vscode.sh linkupdater.sh
    ```
@@ -101,10 +105,13 @@ vscode-portable/
    ./update_vscode.sh
    ./linkupdater.sh
    ```
-4. Launch using:
+4. Launch:
    ```bash
    ./launch-vscode.sh
    ```
+
+> 🧠 **Note for Linux users:**  
+> After copying from Windows or a ZIP, re-run `chmod +x *.sh` if scripts lose executable permissions.
 
 ---
 
@@ -123,10 +130,15 @@ vscode-portable/
    ./update_vscode.sh
    ./linkupdater.sh
    ```
-4. Launch with:
+4. Launch:
    ```bash
    ./launch-vscode.command
    ```
+
+> 🧠 **Note for macOS users:**  
+> If macOS blocks a script (Gatekeeper), right-click it → **Open**, then confirm.  
+> Or remove the quarantine flag:  
+> `xattr -dr com.apple.quarantine ./update_vscode.sh`
 
 ---
 
@@ -150,11 +162,11 @@ auto_check_for_update=true
 |-----|--------------|
 | `basePath` | Root folder containing data and version folders |
 | `channel` | `stable` or `insider` |
-| `arch` | Architecture for download (e.g., `win32-x64-archive`) |
-| `maxVersionsToKeep` | How many old versions to retain (0 = keep all) |
-| `defaultVersion` | Specific version to install (e.g., `1.92.0`) |
+| `arch` | Architecture for download (e.g. `win32-x64-archive`) |
+| `maxVersionsToKeep` | Number of old versions to retain (`0` = keep all) |
+| `defaultVersion` | Specific version to install (e.g. `1.92.0`) |
 | `check_sha` | Validate downloaded files’ integrity |
-| `auto_check_for_update` | Automatically check for new versions |
+| `auto_check_for_update` | Automatically check for new releases |
 
 ---
 
@@ -162,7 +174,7 @@ auto_check_for_update=true
 
 The `settings_sync/` folder helps synchronize VS Code settings between OSes.
 
-### Files:
+### Files
 - **`settings.json`** — master configuration file  
 - **`settings_sync.sh`** — synchronization script  
 - **`settings_sync_config.txt`** — defines which versions exchange settings
@@ -178,11 +190,12 @@ versions_sync=[
 ```
 
 ### How It Works
-- The `settings_sync.sh` script reads `versions_sync`.
-- For each `[src,dest]` pair, it copies settings from the **source** to the **destination**.
-- This ensures all systems share a consistent configuration.
+- Run `settings_sync.sh` from within the `settings_sync/` folder.  
+- The script reads `versions_sync` and, for each `[src, dest]` pair, copies settings from the **source** to the **destination**.  
+- Ensures all systems share a consistent configuration.
 
 ### Possible Values for `src` and `dest`
+
 | Value | Meaning |
 |--------|----------|
 | `self` | The central `settings_sync/settings.json` file |
@@ -206,15 +219,15 @@ versions_sync=[
 ## 🧩 Updater Script Behavior (Overview)
 
 ### `update_vscode` (Windows `.ps1`, Linux/macOS `.sh`)
-- Checks for the latest version via VS Code’s update API.
-- Downloads and extracts the correct archive.
-- Creates a shared data link (`data/`) so extensions and settings persist.
-- Keeps a configurable number of previous versions.
-- Logs all actions in `log.txt`.
+- Checks for the latest VS Code version via the update API.  
+- Downloads and extracts the correct archive.  
+- Links to the shared `data/` folder (for extensions/settings).  
+- Keeps a configurable number of previous versions.  
+- Logs all actions to `log.txt`.
 
 ### `linkupdater`
-- Scans for installed VS Code versions.
-- Chooses the newest available version (prefers stable).
+- Scans for installed VS Code versions.  
+- Chooses the newest available version (prefers stable).  
 - Updates:
   - Launcher scripts (`launch-vscode.bat` / `.sh`)
   - Shortcuts (`VSCode.lnk` on Windows)
@@ -224,13 +237,14 @@ versions_sync=[
 ## 🧱 Portable Data and Reuse
 
 Each OS maintains a shared `data/` folder:
+
 | OS | Path | Description |
-|----|------|-------------|
+|----|------|--------------|
 | 🪟 Windows | `windows/data/` | Stores extensions, settings, and user data |
 | 🐧 Linux | `linux/data/` | Same structure |
 | 🍎 macOS | `mac/data/` | Same structure |
 
-This allows identical environments across different systems or drives.
+This allows identical VS Code environments across different systems or portable drives.
 
 ---
 
@@ -238,7 +252,15 @@ This allows identical environments across different systems or drives.
 
 - To **limit disk usage**, set `maxVersionsToKeep` to 2–3.  
 - To **clean install**, delete all `vscode-stable-*` folders but keep `data/`.  
-- To **manually sync**, re-run `settings_sync.sh`.
+- To **manually sync settings**, re-run `settings_sync.sh`.
+
+---
+
+## 🚧 Known Limitations / Future Plans
+
+- macOS and Linux scripts are minimally tested.  
+- VS Code Insiders channel support is experimental.  
+- Planned: cross-OS extension sync and conflict-free merging.
 
 ---
 
@@ -254,5 +276,3 @@ This allows identical environments across different systems or drives.
 ---
 
 ✨ **Enjoy a unified, version-managed, and portable VS Code setup across all your operating systems!**
-
-
