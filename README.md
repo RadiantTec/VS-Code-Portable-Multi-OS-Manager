@@ -1,8 +1,8 @@
 # 💼 VS Code Portable Multi-OS Manager Version 0.0.1
 
-The project is currently not stable/tested. Use at your own discretion.
+The project is currently not fully stable/tested. Use at your own discretion.
 
-The projects aids in making a **portable pendrive hostable vscode** which works across the 3 os windows, linux and macOS, while providing access to maintain different versions of vscode for each os. Each version for a os share the same data folder optimising resource usage acroos versions.
+The projects aids in making a **portable pendrive hostable vscode** which works across the 3 os windows, linux and macOS, while enabling to maintain different versions of vscode for each os. Each version for a os share the same data folder optimising resource usage across versions.
 
 A **cross-platform portable VS Code environment** that allows you to easily:
 - Install and maintain multiple VS Code versions per OS
