@@ -1,0 +1,55 @@
+# =============================================
+# VS Code Portable Configuration (macOS)
+# =============================================
+# Works with vscodeupdater-mac.sh
+# and should reside in mac/config.txt
+# =============================================
+
+# Base path for VS Code portable environment
+# Default: parent directory of updater/
+basePath=..
+
+# Update channel:
+# stable = Official release
+# insider = Preview build
+channel=stable
+
+# Architecture:
+# macOS options:
+#   darwin-arm64  (Apple Silicon)
+#   darwin-x64    (Intel)
+arch=darwin-arm64
+
+# Perform SHA256 integrity check after download
+check_sha=true
+
+# Automatically fetch latest updates
+auto_check_for_update=true
+
+# Specify version manually (optional)
+defaultVersion=
+
+# Keep only the latest N versions
+# Set 0 to keep all installed versions
+maxVersionsToKeep=2
+
+# Path for VS Code's user data
+dataFolder=../data
+
+# Log output location
+logFile=../updater/log.txt
+
+# Display progress bar with download speed
+show_download_speed=true
+
+# Retry failed downloads
+max_retries=3
+
+# Timeout in seconds for download connections
+timeout=120
+
+# Proxy settings (leave empty if none)
+proxy=
+
+# Automatically grant execution permission to launch-vscode.sh
+auto_chmod_launcher=true

@@ -1,0 +1,126 @@
+# =========================================================
+# 🧰 VS Code Portable Configuration
+# =========================================================
+# This configuration file controls how the portable VS Code
+# manager installs, updates, and launches Visual Studio Code.
+# Edit this file in any text editor (e.g., Notepad).
+# Lines beginning with # are comments.
+# =========================================================
+
+
+# ---------------------------------------------------------
+# 📂 Base Folder
+# ---------------------------------------------------------
+# The directory where portable VS Code versions will be stored.
+# Default: folder containing this script.
+# Example: D:\Apps\VSCodePortable
+# ---------------------------------------------------------
+basePath =
+
+
+# ---------------------------------------------------------
+# 🌐 Update Channel
+# ---------------------------------------------------------
+# VS Code has multiple update channels:
+#   stable   – official release (recommended)
+#   insider  – daily developer build
+#   exploration / other channels – rarely used
+#
+# When changing this, the updater will install a new channel
+# side-by-side (does NOT overwrite other channels).
+# ---------------------------------------------------------
+channel = stable
+
+
+# ---------------------------------------------------------
+# 🧱 Architecture
+# ---------------------------------------------------------
+# Determines which build of VS Code to download.
+# Common options:
+#   win32-x64-archive   → Standard 64-bit build
+#   win32-arm64-archive → ARM build
+#   win32-ia32-archive  → 32-bit build
+# ---------------------------------------------------------
+arch = win32-x64-archive
+
+
+# ---------------------------------------------------------
+# 🔢 Default Version
+# ---------------------------------------------------------
+# Normally left blank — updater automatically uses latest.
+# You can set a specific version to pin (e.g., "1.94.2").
+# This version must exist in the VS Code release stream.
+# ---------------------------------------------------------
+defaultVersion =
+
+
+# ---------------------------------------------------------
+# 💾 Max Versions to Keep
+# ---------------------------------------------------------
+# How many previous versions to keep (per channel).
+# Older versions beyond this number are automatically deleted.
+# Set to 0 to disable cleanup.
+# Example: 3 → keep 3 latest versions per channel.
+# ---------------------------------------------------------
+maxVersionsToKeep = 3
+
+
+# ---------------------------------------------------------
+# 🔗 Target Version for Link Updater
+# ---------------------------------------------------------
+# Used only by "update-links.ps1" (optional).
+# If set, launcher and shortcut will point to this version.
+# If blank, script will automatically:
+#   1️⃣ Prefer latest stable version
+#   2️⃣ Otherwise, latest insider version
+# ---------------------------------------------------------
+targetVersion =
+
+
+# ---------------------------------------------------------
+# ✅ Integrity Check (SHA256)
+# ---------------------------------------------------------
+# When true, verifies the downloaded VS Code archive
+# using the SHA256 hash from Microsoft’s release metadata.
+# This ensures the file was not corrupted or tampered with.
+# Options: true / false
+# Note: Slightly increases download time.
+# ---------------------------------------------------------
+check_sha = true
+
+
+# ---------------------------------------------------------
+# ⏸ Pause/Resume Controls
+# ---------------------------------------------------------
+# During download:
+#   Press 'P' to pause  ⏸
+#   Press 'R' to resume ▶
+# The script will automatically resume partial downloads.
+# If the window closes, the next run continues from last block.
+# ---------------------------------------------------------
+
+
+# ---------------------------------------------------------
+# 🧾 Logging
+# ---------------------------------------------------------
+# All actions are appended to log.txt in the same folder.
+# Includes timestamps, versions, and download progress data.
+# ---------------------------------------------------------
+
+
+# ---------------------------------------------------------
+# ⚙️ Example Directory Structure (auto-created)
+# ---------------------------------------------------------
+# basePath\
+# ├── vscode-stable-1.94.2\
+# ├── vscode-insider-1.95.0\
+# ├── data\
+# ├── config.txt
+# ├── update-vscode.ps1
+# ├── update-links.ps1
+# ├── launch-vscode.bat
+# └── VSCode.lnk
+# ---------------------------------------------------------
+
+# End of config.txt
+# =========================================================

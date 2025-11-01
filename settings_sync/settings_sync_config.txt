@@ -1,0 +1,32 @@
+# -----------------------------
+# VS Code Settings Sync Configuration
+# -----------------------------
+# This file controls how settings.json is synchronized across OSes.
+# -----------------------------
+
+# versions_sync format:
+# Each entry is [source, destination]
+# Values for source and destination:
+#   self   - settings_sync/settings.json (central master)
+#   latest - latest available settings.json from any OS/data folder
+#   win    - Windows data/User/settings.json
+#   linux  - Linux data/User/settings.json
+#   mac    - macOS data/User/settings.json
+#
+# Example:
+#   [self,win]    → Copy master settings.json to Windows
+#   [latest,linux] → Copy latest available settings.json to Linux
+
+versions_sync=[
+    [latest,win],
+    [latest,linux],
+    [latest,mac]
+]
+
+# -----------------------------
+# Optional: manual overrides
+# -----------------------------
+# You can add additional entries here to copy settings between specific versions
+# Example:
+#   [win,mac]    → Copy Windows settings to macOS
+#   [linux,self] → Copy Linux settings back to master

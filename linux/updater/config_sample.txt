@@ -1,0 +1,49 @@
+# =============================================
+# VS Code Portable Configuration (Linux)
+# =============================================
+# This config works with vscodeupdater-linux.sh
+# and should reside in linux/config.txt
+# =============================================
+
+# Base path for installation and data
+# Default: parent directory of updater/
+basePath=..
+
+# Channel options:
+# stable = Official release
+# insider = Preview (Insider) build
+channel=stable
+
+# Architecture:
+# Options: linux-x64, linux-arm64, linux-armhf
+arch=linux-x64
+
+# If true, verify SHA256 checksum after download
+check_sha=true
+
+# Automatically check for new versions
+auto_check_for_update=true
+
+# Version to install manually (leave empty for latest)
+defaultVersion=
+
+# How many older versions to keep
+maxVersionsToKeep=2
+
+# Data folder for user data (settings, extensions)
+dataFolder=../data
+
+# Log file (will be created automatically)
+logFile=../updater/log.txt
+
+# Enable advanced progress bar with speed display
+show_download_speed=true
+
+# Retry download attempts (in case of failure)
+max_retries=3
+
+# Timeout for curl requests (in seconds)
+timeout=120
+
+# Optional proxy URL (blank if unused)
+proxy=
