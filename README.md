@@ -4,6 +4,8 @@ The project is currently not fully stable/tested. Use at your own discretion.
 
 The projects aids in making a **portable pendrive hostable vscode** which works across the 3 os windows, linux and macOS, while enabling to maintain different versions of vscode for each os. Each version for a os share the same data folder optimising resource usage across versions.
 
+Also it can be used specifically for local use in a specific os by simply copying the folder for that os in to the system, and making use of tools for that os to maintain the different versions of vscode.
+
 A **cross-platform portable VS Code environment** that allows you to easily:
 - Install and maintain multiple VS Code versions per OS
 - Automatically update to the latest versions
